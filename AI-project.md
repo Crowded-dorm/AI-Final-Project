@@ -1,38 +1,50 @@
-通過系計中運算資源貢獻此專案
+AI-project
 ===
 
-### SSH connect with **port-forwarding**
+[**通過系計中運算資源貢獻此專案**](https://hackmd.io/@oceanic/BywRXeyNn)
+
+[**Github Page 使用教學**](https://www.youtube.com/watch?v=NovKS8kWYAg)
+
+To do
+---
+- [x] Design the project
+- [ ] Organize codebase and design architecture
+- [ ] Prepare dataset
+- [ ] Design the program
+- [ ] Testing and debug
+- [ ] Write report
+
+Due
+---
+- [ ] Provide a 1-2 page slides to summarize your progress: 5/9
+- [ ] Construct a GitHub repo for your project: 5/9
+- [ ] Showcase your final project: 6/6, tentatively
+
+Video synthesis with near-duplicate images
+---
+- [x] An app selecting and merging near-duplicate images.
+### Strategies
+We can build an app that provides several functionalities:
+- Find near-duplicate images
+- Ask Users to select the images to merge to a video or delete.
+- Output a merged video
+- (Bonus) Control the camera to make video viewpoint move! (3d-moments)
+
+#### Codebase
+1. Detecting near-duplicate images
+
+- https://github.com/idealo/imagededup
+```python=
+from imagededup.methods import PHash
+phasher = PHash()
+encodings = phasher.encode_images(image_dir='path/to/image/directory')
+duplicates = phasher.find_duplicates(encoding_map=encodings)
 ```
-ssh -L 8080:localhost:8080 110550071@172.30.17.213
-```
 
-連上後在瀏覽器打 localhost:8080 即可使用vscode
+2. Generating videos (The second one can control the camera.)
+- https://github.com/google-research/frame-interpolation
+- https://3d-moments.github.io/
 
-### Activate environment and update project
-在vscode開啟terminal，並輸入下列幾行
-```bash
-conda activate ai
-cd ~/AI-Final-Project
-git fetch origin
-git pull # If there's any difference, you need to update.
-```
-
-### Git push if you finish your job
-
-```bash!
-cd ~/AI-Final-Project
-git fetch origin
-git pull # If there's any difference, you need to update.
-git add .
-git status
-git commit -m 'The-commit-message' # The commit message is a comment describing this push.
-git push main # Or git push (If it fails)
-```
-
-### Exit the environment
-```bash
-conda deactivate
-```
-
-### Useful reference
-[**如何用 Git & Github 與他人協作開發**](https://www.youtube.com/watch?v=AFMoQqH6t3A)
+### Resource
+[Image duplicate detection](https://github.com/topics/image-duplicate-detection)
+[Video editor](https://github.com/topics/video-editor)
