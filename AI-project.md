@@ -14,6 +14,7 @@ ssh -L 8080:localhost:8080 110550071@172.30.17.213
 conda activate ai
 cd ~/AI-Final-Project
 git fetch origin
+git pull # If there's any difference, you need to update.
 ```
 
 ### Git push if you finish your job
