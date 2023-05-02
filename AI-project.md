@@ -1,6 +1,10 @@
 AI-project
 ===
 
+[**通過系計中運算資源貢獻此專案**](https://hackmd.io/@oceanic/BywRXeyNn)
+
+[**Github Page 使用教學**](https://www.youtube.com/watch?v=NovKS8kWYAg)
+
 To do
 ---
 - [x] Design the project
