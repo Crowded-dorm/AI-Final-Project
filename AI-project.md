@@ -1,4 +1,4 @@
-AI project
+AI-project
 ===
 
 To do
