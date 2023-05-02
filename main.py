@@ -9,4 +9,4 @@ if __name__ == '__main__':
     img_arr = getImgList(folder_path)
     img = selectSourceImage(img_arr)
     choices = findNearDuplicateImages(img)
-    raise "Not implemented!"
+    #
