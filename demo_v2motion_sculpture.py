@@ -26,7 +26,7 @@ def run(gpus, config, out_dir, motion_sculpture):
             f"python motion_sculpture.py -d custom_dataset -c {config} -o {out_dir}/motion_sculpture"
         ),
         (
-            f"python mergetoGIF.py -i {out_dir}"
+            f"python mergetoGIF.py -i {out_dir}/motion_sculpture"
         )
     ]
     if motion_sculpture:
