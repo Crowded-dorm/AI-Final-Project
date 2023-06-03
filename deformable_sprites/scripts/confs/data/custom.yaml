@@ -1,4 +1,4 @@
-root: "/home/oceanic/AI/custom_dataset"
+root: "../../custom_dataset"
 type: "custom"
 res: "480p"
 seq: "custom"
