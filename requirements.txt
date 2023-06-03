@@ -93,14 +93,8 @@ scipy==1.10.1
 six==1.15.0
 soupsieve==2.4.1
 stack-data==0.6.2
-tensorboard==2.6.0
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.6.2
-tensorflow-addons==0.15.0
-tensorflow-datasets==4.4.0
-tensorflow-estimator==2.6.0
-tensorflow-metadata==1.13.1
+tensorboard
+tensorflow
 termcolor==1.1.0
 tifffile==2023.4.12
 tqdm==4.64.1
