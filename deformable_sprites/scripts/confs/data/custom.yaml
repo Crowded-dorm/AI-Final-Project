@@ -1,0 +1,6 @@
+root: "/home/oceanic/AI/custom_dataset"
+type: "custom"
+res: "480p"
+seq: "custom"
+scale: 0.5
+flow_gap: 1

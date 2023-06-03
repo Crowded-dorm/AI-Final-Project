@@ -1,0 +1,15 @@
+defaults:
+    - data: custom
+    - model: no_tex
+    - train
+    - _self_
+
+n_layers: 2
+resume: True
+preload: True
+log_root: custom_dataset/results
+exp_name: dev 
+
+hydra:
+    run:
+        dir: ${log_root}
