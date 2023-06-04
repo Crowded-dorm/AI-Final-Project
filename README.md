@@ -1,8 +1,10 @@
 # AI-Final-Project
 Motion-sculpture effect video generation from large-motion frames.
 
-## BibTeX
+## Web Demo
+Colab demo for generating motion-sculpture effect from an input video. [![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo.ipynb)
 
+## BibTeX
 ```
 @inproceedings{ye2022sprites,
     title = {Deformable Sprites for Unsupervised Video Decomposition},
