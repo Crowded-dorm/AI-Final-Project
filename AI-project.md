@@ -9,9 +9,9 @@ To do
 ---
 - [x] Design the project
 - [x] Organize codebase and design architecture
-- [ ] Prepare dataset
+- [x] Prepare dataset
 - [ ] Design the program
-- [ ] Testing and debug
+- [ ] Qualitative and quantitative testing
 - [ ] Write report
 
 Due
