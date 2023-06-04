@@ -1,2 +1,2 @@
 # AI-Final-Project
-Video synthesis from near-duplicate images.
+Motion-sculpture effect video generation from large-motion frames.
