@@ -25,3 +25,17 @@ Colab demo for generating motion-sculpture effect from an input video. [![Demo-v
       primaryClass={cs.CV}
 }
 ```
+
+```
+@article{Caelles_arXiv_2019,
+      author={Sergi Caelles and
+            Jordi Pont-Tuset and
+            Federico Perazzi and
+            Alberto Montes and
+            Kevis-Kokitsi Maninis and
+            Luc {Van Gool}},
+      title={The 2019 DAVIS Challenge on VOS: Unsupervised Multi-Object Segmentation},
+      journal={arXiv},
+      year={2019}
+}
+```
