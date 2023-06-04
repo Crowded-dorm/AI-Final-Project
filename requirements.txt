@@ -1,5 +1,5 @@
 apache-beam==2.48.0
-imageio
+imageio==2.29.0
 imageio-ffmpeg
 matplotlib
 opencv-python
