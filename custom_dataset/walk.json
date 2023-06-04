@@ -1,5 +1,5 @@
 {
-    "custom": {
+    "walk": {
         "start": 5,
         "end": 7,
         "fps": 10

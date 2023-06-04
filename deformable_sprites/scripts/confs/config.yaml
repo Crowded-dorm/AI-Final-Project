@@ -7,9 +7,9 @@ defaults:
 n_layers: 2
 resume: True
 preload: True
-log_root: custom_dataset/results
+log_root: outputs
 exp_name: dev 
 
 hydra:
     run:
-        dir: ${log_root}
+        dir: ${log_root}/${data.seq}

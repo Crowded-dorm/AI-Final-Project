@@ -45,7 +45,7 @@ def main(args):
         elif args.dtype == "stv2":
             args.root = "/path/to/SegTrackv2"
         elif args.dtype == "custom":
-            args.root = "custom_dataset"
+            args.root = "custom_dataset/videos"
 
     if args.seqs is None:
         if args.dtype == "fbms":

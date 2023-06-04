@@ -1,4 +1,4 @@
-root: "../../custom_dataset"
+root: "../../custom_dataset/videos"
 type: "custom"
 res: "480p"
 seq: "custom"
