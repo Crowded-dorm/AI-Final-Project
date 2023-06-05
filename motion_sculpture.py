@@ -14,8 +14,8 @@ sys.path.append(os.path.abspath("__file__/../.."))
 from PIL import Image
 import cv2
 
-def propagate_edits(vid_root, config, opt_root, out_root):
-    img_root = find_img_root(vid_root, config)
+def propagate_edits(dataset_root, config, opt_root, out_root, ext):
+    img_root = find_img_root(dataset_root, config)
     with open(config, "r") as f:
         time_specs = json.load(f)
     seq = list(time_specs.keys())[0]
@@ -42,16 +42,19 @@ def propagate_edits(vid_root, config, opt_root, out_root):
         test = Image.fromarray(test)
         
         pre.paste(test, mask=test)
-        background = Image.open(f'{img_root}/{i+1:05d}.png')
+        background = Image.fromarray((255*imgs[i]).permute(1, 2, 0).numpy().astype(np.uint8))
         background.paste(pre, mask=pre)
-        background.save(f"{out_root}/{i:05d}.png")
+        background.save(f"{out_root}/{i:05d}.{ext}")
         
 def find_mask_root(seq_root):
     mask_dir = sorted(glob.glob(f"{seq_root}/*_masks"))
     return mask_dir[-1]
 
 def find_img_root(dataset_dir, config):
-    base_dir = os.path.join(dataset_dir, 'PNGImages')
+    if dataset_dir == 'davis':
+        base_dir = os.path.join(dataset_dir, 'JPEGImages/480p')
+    else:
+        base_dir = os.path.join(dataset_dir, 'PNGImages')
     with open(config, 'r') as f:
         time_specs = json.load(f)
     seq = list(time_specs.keys())[0]
@@ -90,9 +93,10 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    #parser.add_argument("-d", "--dataset_dir", default='custom_dataset', help="dataset directory")
+    parser.add_argument("-d", "--dataset_dir", default='custom_dataset/videos', help="dataset directory")
     parser.add_argument("-c", "--config", default="custom_dataset/panda.json")
     parser.add_argument("-o", "--out_root", default=None)
+    parser.add_argument("-e", "--image_ext", default='png')
     args = parser.parse_args()
 
-    propagate_edits('custom_dataset/videos', args.config, 'outputs', args.out_root)
+    propagate_edits(args.dataset_dir, args.config, 'outputs', args.out_root, args.image_ext)
