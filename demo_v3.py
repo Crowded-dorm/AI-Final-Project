@@ -83,7 +83,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--pattern', default='baby')
-    parser.add_argument('-t', '--times_to_interpolate', default=5)
+    parser.add_argument('-t', '--times_to_interpolate', type=int, default=5)
     parser.add_argument('-o', '--out_root', default=None)
     parser.add_argument('-m', action="store_true", help="use motion sculpture")
     parser.add_argument('--gpus', nargs='*', default=['0'])
