@@ -196,7 +196,7 @@ class ProcessDirectory(beam.DoFn):
       logging.info('Output video saved at %s/interpolated.mp4.', directory)
       
       media.write_video(f'{dir2}/{_PATTERN.value}.mp4', frames, fps=_FPS.value)
-      logging.info('Output video saved at %s/{_PATTERN.value}.mp4.', dir2)
+      logging.info('Output video saved at %s/%s.mp4.', dir2, _PATTERN.value)
 
 
 def _run_pipeline() -> None:
