@@ -28,15 +28,15 @@ Motion-sculpture effect video generation from large-motion frames.
 ```
 
 ```
-@article{Caelles_arXiv_2019,
-      author={Sergi Caelles and
-            Jordi Pont-Tuset and
-            Federico Perazzi and
-            Alberto Montes and
-            Kevis-Kokitsi Maninis and
-            Luc {Van Gool}},
-      title={The 2019 DAVIS Challenge on VOS: Unsupervised Multi-Object Segmentation},
-      journal={arXiv},
-      year={2019}
+@inproceedings{Perazzi_CVPR_2016,
+  author    = {Federico Perazzi and
+               Jordi Pont-Tuset and
+               Brian McWilliams and
+               Luc Van Gool and
+               Markus Gross and
+               Alexander Sorkine-Hornung},
+  title     = {A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2016}
 }
 ```
