@@ -10,7 +10,7 @@ To do
 - [x] Design the project
 - [x] Organize codebase and design architecture
 - [x] Prepare dataset
-- [ ] Design the program
+- [x] Design the program
 - [ ] Qualitative and quantitative testing
 - [ ] Write report
 
@@ -37,7 +37,9 @@ We can make a program that provides several functionalities:
 
 Demo
 ---
-- Add motion-sculpture effect to video! [![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_v2motion_sculpture.ipynb)
+[![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_near-duplicate-synthesis.ipynb) Colab demo for generating motion-sculpture effect video from near-duplicate images!  
+[![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_v2motion_sculpture.ipynb) Colab demo for generating motion-sculpture effect from an input video.
+
 
 
 Results
