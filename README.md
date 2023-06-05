@@ -40,3 +40,12 @@ Motion-sculpture effect video generation from large-motion frames.
   year      = {2016}
 }
 ```
+
+```
+@inproceedings{cheng2021boundary,
+  title={Boundary {IoU}: Improving Object-Centric Image Segmentation Evaluation},
+  author={Bowen Cheng and Ross Girshick and Piotr Doll{\'a}r and Alexander C. Berg and Alexander Kirillov},
+  booktitle={CVPR},
+  year={2021}
+}
+```
