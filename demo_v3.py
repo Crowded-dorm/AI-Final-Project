@@ -17,7 +17,7 @@ def run(gpus, out_root, motion_sculpture, pattern, times_to_interpolate):
     cmds0 = [
         (
             f"python -m frame_interpolation.eval.interpolator_cli --pattern {pattern} \
-                    --model_path frame_interpolation/pretrained_models/film_net/Style/saved_model \
+                    --model_path pretrained_models/film_net/Style/saved_model \
                     --times_to_interpolate {times_to_interpolate} --output_video"  
         ),
         (
