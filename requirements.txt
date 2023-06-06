@@ -18,3 +18,4 @@ natsort==8.1.0
 gdown==4.5.4
 tqdm==4.64.1
 scipy
+hydra-core
