@@ -18,7 +18,7 @@ Due
 ---
 - [x] Provide a 1-2 page slides to summarize your progress: 5/9
 - [x] Construct a GitHub repo for your project: 5/9
-- [ ] Showcase your final project: 6/6, tentatively
+- [ ] Presentation deadline: 6/9
 
 Video synthesis with near-duplicate images
 ---
@@ -48,7 +48,3 @@ Results
 
 分工
 ---
-
-### Resource
-[Image duplicate detection](https://github.com/topics/image-duplicate-detection)
-[Video editor](https://github.com/topics/video-editor)

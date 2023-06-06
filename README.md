@@ -2,7 +2,7 @@
 Motion-sculpture effect video generation from large-motion frames.
 
 ## Web Demo
-(Testing) [![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_near-duplicate-synthesis.ipynb) Colab demo for generating motion-sculpture effect video from near-duplicate images!  
+[![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_near-duplicate-synthesis.ipynb) Colab demo for generating motion-sculpture effect video from near-duplicate images!  
 [![Demo-v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_v2motion_sculpture.ipynb) Colab demo for generating motion-sculpture effect from an input video.
 
 ## BibTeX
@@ -28,15 +28,24 @@ Motion-sculpture effect video generation from large-motion frames.
 ```
 
 ```
-@article{Caelles_arXiv_2019,
-      author={Sergi Caelles and
-            Jordi Pont-Tuset and
-            Federico Perazzi and
-            Alberto Montes and
-            Kevis-Kokitsi Maninis and
-            Luc {Van Gool}},
-      title={The 2019 DAVIS Challenge on VOS: Unsupervised Multi-Object Segmentation},
-      journal={arXiv},
-      year={2019}
+@inproceedings{Perazzi_CVPR_2016,
+  author    = {Federico Perazzi and
+               Jordi Pont-Tuset and
+               Brian McWilliams and
+               Luc Van Gool and
+               Markus Gross and
+               Alexander Sorkine-Hornung},
+  title     = {A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2016}
+}
+```
+
+```
+@inproceedings{cheng2021boundary,
+  title={Boundary {IoU}: Improving Object-Centric Image Segmentation Evaluation},
+  author={Bowen Cheng and Ross Girshick and Piotr Doll{\'a}r and Alexander C. Berg and Alexander Kirillov},
+  booktitle={CVPR},
+  year={2021}
 }
 ```
