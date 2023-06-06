@@ -41,7 +41,7 @@ def main(args):
         if args.dtype == "fbms":
             args.root = "/path/to/FBMS_Testset"
         elif args.dtype == "davis":
-            args.root = "/path/to/DAVIS"
+            args.root = "../DAVIS"
         elif args.dtype == "stv2":
             args.root = "/path/to/SegTrackv2"
         elif args.dtype == "custom":

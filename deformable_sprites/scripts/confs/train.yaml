@@ -10,7 +10,7 @@ iters_per_phase:
     epi: 6000
     kmeans: 12000
     planar: 10000
-    deform: 24000
+    deform: 70000
     refine: 1000
 
 epochs_per_phase:

@@ -26,7 +26,7 @@ def run(gpus, log_file, seq, overwrite=False):
     worker_id = cur_proc._identity[0] - 1  # 1-indexed processes
     gpu = gpus[worker_id % len(gpus)]
     cmd = (
-        f"CUDA_VISIBLE_DEVICES={gpu} python run_opt.py "
+        f"CUDA_VISIBLE_DEVICES={gpu} python deformable_sprites/scripts/run_opt.py "
     )
     if seq is not None:
         cmd = f"{cmd} data.seq={seq}"

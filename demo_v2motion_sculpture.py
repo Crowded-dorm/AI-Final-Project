@@ -30,7 +30,7 @@ def run(gpus, config, out_root, motion_sculpture):
             f"python deformable_sprites/scripts/dataset_raft.py --gpus {gpus_str}"
         ),
         (
-            f"python deformable_sprites/scripts/run_opt.py data=custom data.seq={seq}"
+            f"python deformable_sprites/scripts/run_opt.py data=custom data.seq={seq} model.use_tex=False"
         )
     ]
     cmds2 = [

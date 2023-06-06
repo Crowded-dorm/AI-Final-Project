@@ -1,6 +1,6 @@
 defaults:
-    - data: custom
-    - model: no_tex
+    - data: davis
+    - model: deform
     - train
     - _self_
 

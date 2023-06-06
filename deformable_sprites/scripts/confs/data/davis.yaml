@@ -1,4 +1,4 @@
-root: "../../davis"
+root: "../../../DAVIS"
 type: "davis"
 res: "480p"
 seq: "dog"
