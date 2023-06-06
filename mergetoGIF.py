@@ -15,10 +15,9 @@ def main(motion_sculpture_root, config, fps):
     seqs = list(time_specs.keys())
     for seq in seqs:
         spec = time_specs[seq]
-        if motion_sculpture_root == None:
-            seq_root = os.path.join('outputs', seq)
-            motion_sculpture_root = os.path.join(seq_root, 'motion_sculpture')
-            print("Store motion-sculpture-effect video to:", motion_sculpture_root)
+        seq_root = os.path.join('outputs', seq)
+        motion_sculpture_root = os.path.join(seq_root, 'motion_sculpture')
+        print("Store motion-sculpture-effect video to:", motion_sculpture_root)
         if fps == None:
             fps = spec["fps"]
         img_paths = sorted(list(filter(isimage, glob.glob(f"{motion_sculpture_root}/*"))))

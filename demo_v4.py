@@ -68,10 +68,10 @@ def run(gpus, out_root, motion_sculpture, pattern, times_to_interpolate):
     ]
     cmds2 = [
         (
-            f"python motion_sculpture.py -c {config} -o {out_root}"
+            f"python motion_sculpture.py -c {config}"
         ),
         (
-            f"python mergetoGIF.py -m {out_root} -c {config}"
+            f"python mergetoGIF.py -c {config}"
         )
     ]
     if motion_sculpture:
