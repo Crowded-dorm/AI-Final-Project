@@ -12,17 +12,18 @@ def isimage(path):
 def main(motion_sculpture_root, config, fps):
     with open(config, 'r') as f:
         time_specs = json.load(f)
-    seq = list(time_specs.keys())[0]
-    spec = time_specs[seq]
-    if motion_sculpture_root == None:
-        seq_root = os.path.join('outputs', seq)
-        motion_sculpture_root = os.path.join(seq_root, 'motion_sculpture')
-        print("Store motion-sculpture-effect video to:", motion_sculpture_root)
-    if fps == None:
-        fps = spec["fps"]
-    img_paths = sorted(list(filter(isimage, glob.glob(f"{motion_sculpture_root}/*"))))
-    frames = [cv2.imread(im)[...,::-1] for im in img_paths]
-    imageio.mimsave(f'{motion_sculpture_root}/result.gif', frames, duration=len(frames)/fps)
+    seqs = list(time_specs.keys())
+    for seq in seqs:
+        spec = time_specs[seq]
+        if motion_sculpture_root == None:
+            seq_root = os.path.join('outputs', seq)
+            motion_sculpture_root = os.path.join(seq_root, 'motion_sculpture')
+            print("Store motion-sculpture-effect video to:", motion_sculpture_root)
+        if fps == None:
+            fps = spec["fps"]
+        img_paths = sorted(list(filter(isimage, glob.glob(f"{motion_sculpture_root}/*"))))
+        frames = [cv2.imread(im)[...,::-1] for im in img_paths]
+        imageio.mimsave(f'{motion_sculpture_root}/result.gif', frames, duration=len(frames)/fps)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

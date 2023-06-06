@@ -14,13 +14,11 @@ sys.path.append(os.path.abspath("__file__/../.."))
 from PIL import Image
 import cv2
 
-def propagate_edits(dataset_root, config, opt_root, out_root, ext):
-    img_root = find_img_root(dataset_root, config)
-    with open(config, "r") as f:
-        time_specs = json.load(f)
-    seq = list(time_specs.keys())[0]
+def propagate_edits(dataset_root, config, opt_root, out_root, ext, seq):
+    img_root = find_img_root(dataset_root, config, seq)
     seq_root = os.path.join(opt_root, seq)
     mask_root = find_mask_root(seq_root)
+    print(img_root)
     masks, imgs = load_components(mask_root, img_root)
 
     if out_root == None:
@@ -50,14 +48,13 @@ def find_mask_root(seq_root):
     mask_dir = sorted(glob.glob(f"{seq_root}/*_masks"))
     return mask_dir[-1]
 
-def find_img_root(dataset_dir, config):
+def find_img_root(dataset_dir, config, seq):
     if dataset_dir == 'davis':
         base_dir = os.path.join(dataset_dir, 'JPEGImages/480p')
     else:
         base_dir = os.path.join(dataset_dir, 'PNGImages')
     with open(config, 'r') as f:
         time_specs = json.load(f)
-    seq = list(time_specs.keys())[0]
     spec = time_specs[seq]
     subdir = "{}_{}-{}_fps{}".format(seq, float(spec["start"]), float(spec["end"]), spec["fps"])
     img_dir = f"{base_dir}/{subdir}"
@@ -88,15 +85,22 @@ def load_imgs(img_dir, n_expected=-1):
     imgs = imgs.permute(0, 3, 1, 2)[:, :3] / 255  # (N, 3, H, W)
     return imgs
 
+def main(dataset_root, config, opt_root, out_root, ext):
+    with open(config, 'r') as f:
+        time_specs = json.load(f)
+    seqs = list(time_specs.keys())
+    for seq in seqs:
+        propagate_edits(dataset_root, config, opt_root, out_root, ext, seq)
+
 
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dataset_dir", default='custom_dataset/videos', help="dataset directory")
-    parser.add_argument("-c", "--config", default="custom_dataset/panda.json")
+    parser.add_argument("-c", "--config", default="custom_dataset/panda_both.json")
     parser.add_argument("-o", "--out_root", default=None)
     parser.add_argument("-e", "--image_ext", default='png')
     args = parser.parse_args()
 
-    propagate_edits(args.dataset_dir, args.config, 'outputs', args.out_root, args.image_ext)
+    main(args.dataset_dir, args.config, 'outputs', args.out_root, args.image_ext)
