@@ -62,8 +62,10 @@ def main(dataset, mode, pattern):
     seq_root = os.path.join('outputs', pattern)
     if mode == 'deform':
         predicted_mask_root = find_refine_root(seq_root)
-    else:
+    elif mode == 'no_tex':
         predicted_mask_root = find_mask_root(seq_root)
+    else:
+        raise "Shouldn't reach here."
     predicted_mask_root = os.path.join(predicted_mask_root, 'masks_0')
     if dataset == 'davis':
         ground_truth_mask_root = os.path.join('../DAVIS/Annotations/480p', pattern)
@@ -87,8 +89,8 @@ def main(dataset, mode, pattern):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     #parser.add_argument('-i', '--image', default=None)
-    parser.add_argument('-d', '--dataset', default='davis')
-    parser.add_argument('-m', '--mode', default='deform')
+    parser.add_argument('-d', '--dataset', choices=['davis', 'custom'], default='davis')
+    parser.add_argument('-m', '--mode', choices=['deform', 'no_tex'], default='deform')
     parser.add_argument('-p', '--pattern', default='bear')
     #parser.add_argument('-p', '--predicted_mask_root', required=True)
     #parser.add_argument('-g', '--ground_truth_mask_root', required=True)
