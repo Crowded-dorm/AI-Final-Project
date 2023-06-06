@@ -13,7 +13,7 @@ def extract_frames(args):
     start = args.start if args.start >= 0 else start + duration
     end = args.end if args.end >= 0 else args.end + duration
 
-    outdir = "{}/{}_{}-{}_fps{}".format(args.outdir, name, start, end, args.fps)
+    outdir = "{}/{}_NO_FILM_{}-{}_fps{}".format(args.outdir, name, start, end, args.fps)
     if not args.overwrite and os.path.isdir(outdir):
         print(f"{outdir} already exists, exiting.")
         return

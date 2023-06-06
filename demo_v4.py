@@ -13,14 +13,28 @@ def run(gpus, out_root, motion_sculpture, pattern, times_to_interpolate):
     print("PROCESS", cur_proc.name, cur_proc._identity)
     gpus_str = " ".join(gpus)
     
+    seq_root = [f'custom_dataset/videos/PNGImages/{pattern}*', 
+                f'custom_dataset/videos/flow_imgs_gap-1/{pattern}*', 
+                f'custom_dataset/videos/flow_imgs_gap1/{pattern}*', 
+                f'custom_dataset/videos/raw_flows_gap-1/{pattern}*', 
+                f'custom_dataset/videos/raw_flows_gap1/{pattern}*',
+                f'outputs/{pattern}*']
+    for seq in seq_root:
+        shutil.rmtree(seq, ignore_errors=True)
+    
+    config = f'custom_dataset/{pattern}.json'
+    os.makedirs(f'custom_dataset/videos/PNGImages/{pattern}_NO_FILM_0.0-1.0_fps10', exist_ok=True)
     cmds0 = [
+        (
+            f"cp -r custom_dataset/frames/{pattern}/*.png custom_dataset/videos/PNGImages/{pattern}_NO_FILM_0.0-1.0_fps10"
+        ),
         (
             f"python -m frame_interpolation.eval.interpolator_cli --pattern {pattern} \
                     --model_path pretrained_models/film_net/Style/saved_model \
                     --times_to_interpolate {times_to_interpolate} --output_video"  
         ),
         (
-            f"python get_config.py --pattern {pattern} -t {times_to_interpolate}"
+            f"python get_configv2.py --pattern {pattern} -t {times_to_interpolate}"
         )
     ]
     for cmd in cmds0:
@@ -28,7 +42,7 @@ def run(gpus, out_root, motion_sculpture, pattern, times_to_interpolate):
         subprocess.call(cmd, shell=True)
         
     
-    config = f'custom_dataset/{pattern}.json'
+    config = f'custom_dataset/{pattern}_both.json'
     with open(config, "r") as f:
         time_specs = json.load(f)
     seq = list(time_specs.keys())[0]
@@ -42,14 +56,14 @@ def run(gpus, out_root, motion_sculpture, pattern, times_to_interpolate):
     
     
     cmds = [
-        # (
-        #     f"python deformable_sprites/scripts/dataset_extract.py --specs {config}"
-        # ),
         (
-            f"python deformable_sprites/scripts/dataset_raft.py --gpus {gpus_str}"
+            f"python deformable_sprites/scripts/dataset_raft.py --gpus {gpus_str} --seqs {pattern}_NO_FILM {pattern}_FILM"
         ),
         (
-            f"python deformable_sprites/scripts/run_opt.py data=custom data.seq={pattern} model.use_tex=False"
+            f"python deformable_sprites/scripts/run_opt.py data=custom data.seq={pattern}_NO_FILM model.use_tex=False"
+        ),
+        (
+            f"python deformable_sprites/scripts/run_opt.py data=custom data.seq={pattern}_FILM model.use_tex=False"
         )
     ]
     cmds2 = [

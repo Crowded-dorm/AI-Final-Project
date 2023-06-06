@@ -149,8 +149,10 @@ def _output_frames(frames: List[np.ndarray], frames_dir: str):
   logging.info('Output frames saved in %s.', frames_dir)
   
   # save outpu frames into custom_dataset as deformable_sprites input
-  frame_num = pow(2, _TIMES_TO_INTERPOLATE.value)
-  dir2 = 'custom_dataset/videos/PNGImages/' + _PATTERN.value + f"_0.0-{float(frame_num//30+1)}_fps10"
+  frame_num = len(frames)
+  #end = float(frame_num//30+1)
+  end = 1.0
+  dir2 = f'custom_dataset/videos/PNGImages/{_PATTERN.value}_FILM_0.0-{end}_fps10'
   os.makedirs(dir2, exist_ok=True)
   if tf.io.gfile.isdir(dir2):
     old_frames = tf.io.gfile.glob(f'{frames_dir}/*.png')
@@ -195,8 +197,8 @@ class ProcessDirectory(beam.DoFn):
       media.write_video(f'{directory}/interpolated.mp4', frames, fps=_FPS.value)
       logging.info('Output video saved at %s/interpolated.mp4.', directory)
       
-      media.write_video(f'{dir2}/{_PATTERN.value}.mp4', frames, fps=_FPS.value)
-      logging.info('Output video saved at %s/%s.mp4.', dir2, _PATTERN.value)
+      # media.write_video(f'{dir2}/{_PATTERN.value}.mp4', frames, fps=_FPS.value)
+      # logging.info(f'Output video saved at {dir2}%s.mp4.', _PATTERN.value)
 
 
 def _run_pipeline() -> None:

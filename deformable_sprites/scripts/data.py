@@ -96,7 +96,10 @@ def get_validation_loader(dset, batch_size, preloaded):
 def get_random_ordered_batch_loader(dset, batch_size, preloaded, min_batch_size=None):
     total_size = len(dset)
     if min_batch_size is None:
-        min_batch_size = batch_size // 2
+        if total_size < batch_size:
+            min_batch_size = total_size // 2
+        else:
+            min_batch_size = batch_size // 2
     idcs = list(range(total_size - min_batch_size))
     sampler = SubsetRandomSampler(idcs)  # sample randomly without replacement
     batch_sampler = OrderedBatchSampler(sampler, total_size, batch_size)

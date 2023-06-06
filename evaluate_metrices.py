@@ -3,6 +3,7 @@ import numpy as np
 import argparse
 import glob
 import os
+import json
 
 def masks_to_boundary(masks, dilation_ratio=0.02):
     """
@@ -25,8 +26,18 @@ def isimage(path):
     ext = os.path.splitext(path)[-1].lower()
     return ext == ".png" or ext == ".jpg" or ext == ".jpeg"
 
-def load_binary_masks(mask_root):
+def load_binary_masks(mask_root, pattern=None, config=None):
     mask_paths = sorted(list(filter(isimage, glob.glob(f"{mask_root}/*"))))
+    if pattern:
+        with open(config, 'r') as f:
+            time_specs = json.load(f)
+            spec = time_specs[pattern]
+        t = spec['times_to_interpolate']
+        n = spec['img_num']
+        frame_num = 2**t * (n-1) + 1
+        print(frame_num)
+        assert(len(mask_paths) == frame_num)
+        mask_paths = [mask_paths[i] for i in range(0, frame_num, 2**t)]
     masks = np.stack([cv2.imread(p, 0) for p in mask_paths])
     binary_masks = np.stack([cv2.threshold(im, 127, 255, cv2.THRESH_BINARY)[1].astype(np.float32) / 255 for im in masks])
     return binary_masks
@@ -58,7 +69,7 @@ def find_mask_root(seq_root):
     mask_dir = sorted(glob.glob(f"{seq_root}/*_masks"))
     return mask_dir[-1]
 
-def main(dataset, mode, pattern):
+def main(dataset, mode, pattern, groundtruth, config):
     seq_root = os.path.join('outputs', pattern)
     if mode == 'deform':
         predicted_mask_root = find_refine_root(seq_root)
@@ -68,12 +79,12 @@ def main(dataset, mode, pattern):
         raise "Shouldn't reach here."
     predicted_mask_root = os.path.join(predicted_mask_root, 'masks_0')
     if dataset == 'davis':
-        ground_truth_mask_root = os.path.join('../DAVIS/Annotations/480p', pattern)
+        ground_truth_mask_root = os.path.join('../DAVIS/Annotations/480p', groundtruth)
     else:
-        ground_truth_mask_root = os.path.join('custom_dataset/gt_masks', pattern)
+        ground_truth_mask_root = os.path.join('custom_dataset/gt_masks', groundtruth)
     print(f'Load predicted masks: {os.path.abspath(predicted_mask_root)}')
     print(f'Load ground truth masks: {os.path.abspath(ground_truth_mask_root)}')
-    predicted_binary_masks = load_binary_masks(predicted_mask_root)
+    predicted_binary_masks = load_binary_masks(predicted_mask_root, pattern, config)
     gt_binary_masks = load_binary_masks(ground_truth_mask_root)
     _, H, W = gt_binary_masks.shape
     predicted_binary_masks = np.stack([cv2.resize(im, (W, H)) for im in predicted_binary_masks])
@@ -91,9 +102,11 @@ if __name__ == '__main__':
     #parser.add_argument('-i', '--image', default=None)
     parser.add_argument('-d', '--dataset', choices=['davis', 'custom'], default='davis')
     parser.add_argument('-m', '--mode', choices=['deform', 'no_tex'], default='deform')
-    parser.add_argument('-p', '--pattern', default='bear')
+    parser.add_argument('-p', '--pattern', default='panda_FILM')
+    parser.add_argument('-g', '--groundtruth', default='panda')
+    parser.add_argument('-c', '--config', default='custom_dataset/panda_both.json')
     #parser.add_argument('-p', '--predicted_mask_root', required=True)
     #parser.add_argument('-g', '--ground_truth_mask_root', required=True)
     args = parser.parse_args()
     
-    main(args.dataset, args.mode, args.pattern)
+    main(args.dataset, args.mode, args.pattern, args.groundtruth, args.config)

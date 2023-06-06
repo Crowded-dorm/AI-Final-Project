@@ -1,7 +1,9 @@
 {
     "panda": {
-        "start": 0,
-        "end": 3,
-        "fps": 10
+        "start": 0, 
+        "end": 1, 
+        "fps": 10, 
+        "times_to_interpolate": 3, 
+        "img_num": 4
     }
 }

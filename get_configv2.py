@@ -12,15 +12,25 @@ def get_config(pattern, times_to_interpolate):
     img_num = len(list(filter(isimage, glob.glob(f"{seg_root}/*"))))
     
     frame_num = 2**times_to_interpolate * (img_num-1) + 1
+    NO_FILM = f"{pattern}_NO_FILM"
+    FILM = f"{pattern}_FILM"
     
     d = dict()
-    d[pattern] = dict()
-    d[pattern]['start'] = 0
-    d[pattern]['end'] = frame_num//30 + 1
-    d[pattern]['fps'] = 10
-    d[pattern]['times_to_interpolate'] = times_to_interpolate
-    d[pattern]['img_num'] = img_num
-    with open(f'custom_dataset/{pattern}.json', 'w') as f:
+    d[NO_FILM] = dict()
+    d[NO_FILM]['start'] = 0
+    #d[NO_FILM]['end'] = frame_num//30 + 1
+    d[NO_FILM]['end'] = 1
+    d[NO_FILM]['fps'] = 10
+    d[NO_FILM]['times_to_interpolate'] = 0
+    d[NO_FILM]['img_num'] = img_num
+    d[FILM] = dict()
+    d[FILM]['start'] = 0
+    #d[FILM]['end'] = frame_num//30 + 1
+    d[FILM]['end'] = 1
+    d[FILM]['fps'] = 10
+    d[FILM]['times_to_interpolate'] = times_to_interpolate
+    d[FILM]['img_num'] = img_num
+    with open(f'custom_dataset/{pattern}_both.json', 'w') as f:
         json.dump(d, f)
     
     # with open(f'custom_dataset/{pattern}_orig.json', 'w') as f:
