@@ -6,8 +6,8 @@ Motion-sculpture effect video generation from large-motion frames.
 
 ## Web Demo
 [![Demo_evaluation_matrices.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_evaluation_matrices.ipynb) Colab demo for evaluation matrices!  
-[![Demo_near-duplicate-synthesis.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_near-duplicate-synthesis.ipynb) Colab demo for generating motion-sculpture effect video from near-duplicate images!  
-[![Demo_v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_v2motion_sculpture.ipynb) Colab demo for generating motion-sculpture effect from an input video.
+(To be repaired) [![Demo_near-duplicate-synthesis.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_near-duplicate-synthesis.ipynb) Colab demo for generating motion-sculpture effect video from near-duplicate images!  
+(To be repaired) [![Demo_v2motion_sculpture.ipynb](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Crowded-dorm/AI-Final-Project/blob/main/Demo_v2motion_sculpture.ipynb) Colab demo for generating motion-sculpture effect from an input video.
 
 ## BibTeX
 We reference the following repos and papers.
